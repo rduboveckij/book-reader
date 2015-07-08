@@ -37,6 +37,7 @@
     };
     vm.busyOptions = {promise: null, message: 'Зачекайте...'};
     vm.search = search;
+    vm.removeSearchQuery = removeSearchQuery;
 
     search();
 
@@ -62,6 +63,11 @@
       getPage(vm.tablePagination);
     }
 
+    function removeSearchQuery() {
+      vm.tablePagination.searchQuery='';
+      getPage(vm.tablePagination);
+    }
+
     function getPage(options) {
       var query = 'https://spreadsheets.google.com/feeds/list/' + SHEETS_API_CODE + '/od6/public/full?alt=json';
       query += '&max-results=' + options.pageSize;
@@ -73,7 +79,7 @@
       }
 
       if (vm.tablePagination.searchQuery) {
-        query += '&q=' + vm.tablePagination.searchQuery.replaceAll(' ', '+');
+        query += '&q=' + vm.tablePagination.searchQuery.trim().replaceAll(' ', '+');
       }
 
       vm.busyOptions.promise = $http
