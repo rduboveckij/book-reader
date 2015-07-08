@@ -42,7 +42,6 @@
 
     function onRegisterApi(gridApi) {
       gridApi.core.on.sortChanged($scope, sortChanged);
-      gridApi.core.on.filterChanged($scope, filterChanged);
       gridApi.pagination.on.paginationChanged($scope, paginationChanged);
     }
 
