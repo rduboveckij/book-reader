@@ -43,7 +43,7 @@
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
+  <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
   <script src="bower_components/angular-busy/dist/angular-busy.min.js"></script>
 
   <script src="main.js"></script>
@@ -76,7 +76,7 @@
     </div>
     <hr/>
     <div cg-busy="vm.busyOptions">
-      <div ui-grid="vm.tableOptions" class="grid" ui-grid-pagination ng-show="vm.tableOptions.data.length > 0"></div>
+      <div ui-grid="vm.tableOptions" class="grid" ui-grid-pagination ui-grid-auto-resize ng-show="vm.tableOptions.data.length > 0"></div>
     </div>
 
     <!-- <table class="table table-striped table-hover table-condensed">

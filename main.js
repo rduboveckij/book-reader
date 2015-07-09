@@ -7,12 +7,13 @@
       'ngTouch',
       'cgBusy',
       'ui.grid',
-      'ui.grid.pagination'
+      'ui.grid.pagination',
+      'ui.grid.autoResize'
     ])
     .constant('SHEETS_API_CODE', '1RkmvojZgrGa4Jd8Tq76gxZb1vbiYnJHLyN0NzYvl-0Y')
     .controller('BookController', BookController);
 
-  function BookController($scope, $http, SHEETS_API_CODE) {
+  function BookController($scope, $http, i18nService, SHEETS_API_CODE) {
     var vm = this;
     //$http.defaults.headers.common['GData-Version'] = '3.0';
     vm.tablePagination = {pageNumber: 1, pageSize: 100, sortColumn: null, sortDirection: null, searchQuery: ''};
@@ -39,6 +40,11 @@
     vm.search = search;
     vm.removeSearchQuery = removeSearchQuery;
 
+    i18nService.setCurrentLang('ru');
+    i18nService.add('ru', {pagination: {
+      sizes: "Элементів на сторінці",
+      totalItems: "Загальна кількість"
+    }});
     search();
 
     function onRegisterApi(gridApi) {
